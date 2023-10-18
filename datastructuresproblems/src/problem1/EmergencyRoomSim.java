@@ -33,4 +33,12 @@ public class EmergencyRoomSim {
 
         System.out.println(name + " added to the queue.");
     }
+	public static void treatPatient(Deque<Patient> queue) {
+        if (!queue.isEmpty()) {
+            Patient patient = queue.poll();
+            System.out.println("Treating " + patient.name + " with color " + patient.color);
+        } else {
+            System.out.println("No patients in the queue.");
+        }
+    }
 }
