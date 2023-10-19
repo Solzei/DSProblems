@@ -13,7 +13,32 @@ public class EmergencyRoomSim {
 		this.color = color;
 	}
 	public static void main(String[] args) {
-		
+		Deque<Patient> emergencyQueue = new ArrayDeque<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Emergency Room Menu:");
+            System.out.println("1. Add Patient");
+            System.out.println("2. Treat Patient");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addPatient(emergencyQueue, scanner);
+                    break;
+                case 2:
+                    treatPatient(emergencyQueue);
+                    break;
+                case 3:
+                    System.out.println("Exiting the program.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        }
+    
 	}
 
 	public static void addPatient(Deque<Patient> queue, Scanner scanner) {
