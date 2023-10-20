@@ -8,7 +8,7 @@ public class EmergencyRoomSim {
 	String name;
 	String color;
 
-	public Patient(String name, String color){
+	public EmergencyRoomSim(String name, String color){ //constructor
 		this.name = name;
 		this.color = color;
 	}
@@ -26,7 +26,7 @@ public class EmergencyRoomSim {
 
             switch (choice) {
                 case 1:
-                    addPatient(emergencyQueue, scanner);
+                    System.out.println(addPatient(emergencyQueue)); // i changed emergencyQueue to a string :(
                     break;
                 case 2:
                     treatPatient(emergencyQueue);
@@ -41,22 +41,24 @@ public class EmergencyRoomSim {
     
 	}
 
-	public static void addPatient(Deque<Patient> queue, Scanner scanner) {
-        System.out.print("Enter patient's name: ");
-        String name = scanner.next();
+	public static String addPatient(Deque<Patient> queue) {
+	Scanner scanner = new Scanner(System.in); // new (probably temp until i can find a solution) scanner because of issues with reusing the scanner from main :(
+        System.out.println("Enter patient's name: ");
+        String name = scanner.nextLine(); // we can put in full names now without errors!!!!! scanner.next() is a bit silly
 
-        System.out.print("Enter patient's color (red, blue, green): ");
-        String color = scanner.next();
+        System.out.println("Enter patient's color (red, blue, green): ");
+        String color = scanner.nextLine();
 
         Patient patient = new Patient(name, color);
 
         if (color.equalsIgnoreCase("red")) {
             queue.addFirst(patient); // Red patients are pushed to the front.
-        } else {
+        }else if (color.equalsIgnoreCase("blue") || color.equalsIgnoreCase("green")){
             queue.addLast(patient); // Blue and green patients at the back.
+        }else{
+        	return "Invalid case."; // Other cases are ignored; patient is not added to the queue.
         }
-
-        System.out.println(name + " added to the queue.");
+		return name+" has been added to the queue.";
     }
 	public static void treatPatient(Deque<Patient> queue) {
         if (!queue.isEmpty()) {
