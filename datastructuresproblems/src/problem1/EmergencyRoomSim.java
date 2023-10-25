@@ -64,6 +64,7 @@ class Patient {
         String name = scanner.nextLine().trim();
 
         System.out.print("Enter patient's color (red, blue, green): ");
+        while(true) {
         String color = scanner.nextLine().trim().toLowerCase();
 
         if (color.equals("red") || color.equals("blue") || color.equals("green")) {
@@ -74,11 +75,12 @@ class Patient {
             } else {
                 queue.addLast(patient); // Blue and green patients at the back.
             }
-
             System.out.println(name + " added to the queue.");
+            break;
         } else {
             System.out.println("Invalid color. Please enter red, blue, or green.");
-            addPatient(queue, scanner);
+            continue;
+        	}
         }
     }
 
