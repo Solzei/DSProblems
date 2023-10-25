@@ -78,6 +78,7 @@ class Patient {
             System.out.println(name + " added to the queue.");
         } else {
             System.out.println("Invalid color. Please enter red, blue, or green.");
+            addPatient(queue, scanner);
         }
     }
 
