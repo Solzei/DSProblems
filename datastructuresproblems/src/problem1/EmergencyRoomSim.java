@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-class Patient {
+public class Patient {
     String name;
     String color;
 
